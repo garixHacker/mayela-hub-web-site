@@ -12,14 +12,15 @@
         content="Mayela Hub provides innovative AI solutions for education and agriculture. 2023 Digital Innovation Award winner specializing in chatbots, predictive models and smart dashboards."
         name="description">
 
-    <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdn.jsdelivr.net;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
-    img-src 'self' data:;
-    font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self';
-    frame-src 'none';">        
+        <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdn.jsdelivr.net;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+        img-src 'self' data:;
+        font-src 'self' https://fonts.gstatic.com;
+        connect-src 'self';
+        frame-src 'none';
+    ">        
 
     <!-- Favicon -->
     <link href="img/mayela-favicon.ico" rel="icon">
@@ -50,6 +51,14 @@
 </head>
 
 <body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
 
 
     <!-- Navbar Start -->
@@ -66,20 +75,20 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="#" class="nav-item nav-link" >About</a>
-                        <a href="#" class="nav-item nav-link" >Services</a>
-                        <a href="#" class="nav-item nav-link" >Projects</a>
+                        <a href="#" class="nav-item nav-link" onclick="showUnderConstruction()">About</a>
+                        <a href="#" class="nav-item nav-link" onclick="showUnderConstruction()">Services</a>
+                        <a href="#" class="nav-item nav-link" onclick="showUnderConstruction()">Projects</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu bg-light mt-2">
-                                <a href="#" class="dropdown-item" >Features</a>
-                                <a href="#" class="dropdown-item" >Our Team</a>
-                                <a href="#" class="dropdown-item" >FAQs</a>
-                                <a href="#" class="dropdown-item" >Testimonial</a>
-                                <a href="#" class="dropdown-item" >404 Page</a>
+                                <a href="#" class="dropdown-item" onclick="showUnderConstruction()">Features</a>
+                                <a href="#" class="dropdown-item" onclick="showUnderConstruction()">Our Team</a>
+                                <a href="#" class="dropdown-item" onclick="showUnderConstruction()">FAQs</a>
+                                <a href="#" class="dropdown-item" onclick="showUnderConstruction()">Testimonial</a>
+                                <a href="#" class="dropdown-item" onclick="showUnderConstruction()">404 Page</a>
                             </div>
                         </div>
-                        <a href="#" class="nav-item nav-link" >Contact</a>
+                        <a href="#" class="nav-item nav-link" onclick="showUnderConstruction()">Contact</a>
                     </div>
                     <button type="button" class="btn text-white p-0 d-none d-lg-block" data-bs-toggle="modal"
                         data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
@@ -88,6 +97,13 @@
         </div>
     </div>
     <!-- Navbar End -->
+
+    <script>
+        function showUnderConstruction() {
+            alert("This section is currently under development. Please check back soon!");
+            return false;
+        }
+    </script>
 
     <!-- Hero Start -->
     <div class="container-fluid pt-5 bg-primary hero-header mb-5 pt-3" style="border-radius: 0 0 30px 30px !important;">
@@ -690,6 +706,21 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+    <script>
+        // Charger les modèles IA
+        await faceapi.loadTinyFaceDetectorModel('/models');
+
+        // Détecter les traits du visage
+        const detections = await faceapi.detectAllFaces(votreImage,
+            new faceapi.TinyFaceDetectorOptions());
+
+        // Animer avec Canvas (pseudo-code)
+        function animateMouth() {
+            // [...] Logique d'animation ici
+        }
+    </script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
